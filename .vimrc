@@ -50,6 +50,8 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'kana/vim-smartinput'
 " Dash（https://kapeli.com/dash）
 NeoBundle 'rizzatti/dash.vim'
+" カラースキーム
+NeoBundle 'w0ng/vim-hybrid'
 
 call neobundle#end()
 NeoBundleCheck
@@ -104,9 +106,24 @@ let g:user_emmet_settings = {
     \ }
 
 "------------------------------
+" Color scheme
+"------------------------------
+" write color scheme before 'vim-indent-guides'
+" http://www.camelstudio.jp/note/vim/186/
+syntax on
+" using ~/.Xresources-hybrid
+" https://github.com/obiyuta/dotfiles/.Xresources-hybrid
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
+
+"------------------------------
 " vim-indent-guides 
 "------------------------------
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level=1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=232
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=233
 
 filetype plugin indent on     " required!
 filetype indent on
