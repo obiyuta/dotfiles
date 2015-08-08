@@ -116,6 +116,9 @@ syntax on
 let g:hybrid_use_Xresources = 1
 colorscheme hybrid
 
+" overwrite comment color
+autocmd VimEnter,Colorscheme * :hi Comment ctermfg=237
+
 "------------------------------
 " vim-indent-guides 
 "------------------------------
