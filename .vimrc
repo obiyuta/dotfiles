@@ -87,6 +87,7 @@ endif
 "------------------------------
 " open a NERDTree automatically when vim starts up
 " autocmd vimenter * NERDTree
+nnoremap <silent><C-n> :NERDTreeToggle<CR>
 
 "------------------------------
 " vim-fugitive
@@ -97,7 +98,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 "------------------------------
 " emmet-vim
 "------------------------------
-let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_settings = {
     \    'variables': {
     \      'lang': "ja"
