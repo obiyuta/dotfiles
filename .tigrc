@@ -1,2 +1,2 @@
-bind mail G !@hub browse -- commit/%(commit)
+bind main G !@hub browse -- commit/%(commit)
 bind diff G !@hub browse -- commit/%(commit)
