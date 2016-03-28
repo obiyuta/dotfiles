@@ -52,6 +52,8 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'rizzatti/dash.vim'
 " カラースキーム
 NeoBundle 'w0ng/vim-hybrid'
+" ユーザー定義submodule
+NeoBundle 'kana/vim-submode'
 
 call neobundle#end()
 NeoBundleCheck
@@ -144,6 +146,8 @@ set number
 set noswapfile
 set ruler
 set title
+set showcmd
+set clipboard=unnamed,autoselect
 set background=dark
 highlight LineNr ctermfg=darkyellow
 
@@ -162,28 +166,68 @@ endif
 " Status line
 " http://blog.ruedap.com/2011/07/12/vim-statusline-git-branch-name
 "==============================
-  set statusline=%<     " 行が長すぎるときに切り詰める位置
-  set statusline+=[%n]  " バッファ番号
-  set statusline+=%m    " %m 修正フラグ
-  set statusline+=%r    " %r 読み込み専用フラグ
-  set statusline+=%h    " %h ヘルプバッファフラグ
-  set statusline+=%w    " %w プレビューウィンドウフラグ
-  set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}  " fencとffを表示
-  set statusline+=%y    " バッファ内のファイルのタイプ
-  set statusline+=\     " 空白スペース
+set statusline=%<     " 行が長すぎるときに切り詰める位置
+set statusline+=[%n]  " バッファ番号
+set statusline+=%m    " %m 修正フラグ
+set statusline+=%r    " %r 読み込み専用フラグ
+set statusline+=%h    " %h ヘルプバッファフラグ
+set statusline+=%w    " %w プレビューウィンドウフラグ
+set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}  " fencとffを表示
+set statusline+=%y    " バッファ内のファイルのタイプ
+set statusline+=\     " 空白スペース
 if winwidth(0) >= 130
   set statusline+=%F    " バッファ内のファイルのフルパス
 else
   set statusline+=%t    " ファイル名のみ
 endif
-  set statusline+=%=    " 左寄せ項目と右寄せ項目の区切り
-  set statusline+=%{fugitive#statusline()}  " Gitのブランチ名を表示
-  set statusline+=\ \   " 空白スペース2個
-  set statusline+=%1l   " 何行目にカーソルがあるか
-  set statusline+=/
-  set statusline+=%L    " バッファ内の総行数
-  set statusline+=,
-  set statusline+=%c    " 何列目にカーソルがあるか
-  set statusline+=%V    " 画面上の何列目にカーソルがあるか
-  set statusline+=\ \   " 空白スペース2個
+set statusline+=%=    " 左寄せ項目と右寄せ項目の区切り
+set statusline+=%{fugitive#statusline()}  " Gitのブランチ名を表示
+set statusline+=\ \   " 空白スペース2個
+set statusline+=%1l   " 何行目にカーソルがあるか
+set statusline+=/
+set statusline+=%L    " バッファ内の総行数
+set statusline+=,
+set statusline+=%c    " 何列目にカーソルがあるか
+set statusline+=%V    " 画面上の何列目にカーソルがあるか
+set statusline+=\ \   " 空白スペース2個
+
+
+"==============================
+" Key Mapping 
+" http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca
+"==============================
+inoremap <silent> jj <ESC>
+
+" window/tab/moveの操作感はなるべくtmuxと揃える
+noremap : ;
+noremap ; :
+
+" Split window
+nnoremap s <Nop>
+nnoremap s\ :<C-u>vs<CR>
+nnoremap s- :<C-u>sp<CR>
+" Move between windows
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+nnoremap so <C-w>w
+" Swap window
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sO <C-w>r
+" Resize window
+call submode#enter_with('window-resize', 'n', '', 's>', '<C-w>>')
+call submode#enter_with('window-resize', 'n', '', 's<', '<C-w><')
+call submode#enter_with('window-resize', 'n', '', 's+', '<C-w>+')
+call submode#enter_with('window-resize', 'n', '', 's_', '<C-w>-')
+call submode#map('window-resize', 'n', '', '>', '<C-w>>')
+call submode#map('window-resize', 'n', '', '<', '<C-w><')
+call submode#map('window-resize', 'n', '', '+', '<C-w>+')
+call submode#map('window-resize', 'n', '', '_', '<C-w>-')
+
+
+
 
