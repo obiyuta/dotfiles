@@ -1,8 +1,10 @@
 emmet@2.4.3
 file-icons@1.7.18
+highlight-column@0.5.1
 highlight-selected@0.11.2
 language-slim@0.5.0
 minimap@4.24.7
+pretty-json@1.6.0
 project-manager@2.9.7
 rspec@0.3.2
 ruby-block@0.3.5
