@@ -1,0 +1,30 @@
+# https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File-Syntax.html
+# 
+
+# completion upper/lower case
+set completion-ignore-case on
+
+# append a file’s type to the filename
+set visible-stats on
+
+# display completion option
+set menu-complete-display-prefix off
+
+# completion - _
+set completion-map-case on
+
+# completion ~ -> /path/to/home
+set expand-tilde on
+
+# apend / to symlinkdir auto
+set mark-symlinked-directories on
+
+# japanese
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# C-(n|p)でhistory-search
+"\C-p":history-search-backward
+"\C-n":history-search-forward

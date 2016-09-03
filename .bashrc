@@ -47,6 +47,14 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
 
+# completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# .inputrc
+[ -f ~/.inputrc ] && bind -f ~/.inputrc
+
 #hub
 eval "$(hub alias -s)"
 
