@@ -1,5 +1,8 @@
+atom-beautify@0.29.12
 emmet@2.4.3
 file-icons@1.7.18
+git-log@0.4.1
+git-plus@5.17.0
 highlight-column@0.5.1
 highlight-selected@0.11.2
 language-slim@0.5.0
