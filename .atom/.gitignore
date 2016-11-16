@@ -8,3 +8,4 @@ storage
 .node-gyp
 packages
 .projects.cson
+projects.cson
