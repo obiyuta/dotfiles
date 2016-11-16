@@ -46,6 +46,7 @@ export LSCOLORS="cxfxcxdxbxegedabagacad"
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
+export HOMEBREW_BREWFILE=~/Brewfile
 
 # completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
