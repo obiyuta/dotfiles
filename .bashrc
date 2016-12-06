@@ -1,4 +1,4 @@
-#alias
+#= alias
 alias a='alias'
 a ll='ls -l'
 a la='ls -a'
@@ -8,7 +8,7 @@ a v='vim'
 a vi='vim'
 a vim='mvim -v'
 
-# Dash shortcut
+#= Dash shortcut
 # cf: $ dash vim
 function dash() {
     open dash://$1
@@ -31,35 +31,37 @@ export PATH=$PATH:$HOME/Library/Haskell/bin
 #= mysql
 export PATH=/usr/local/mysql/bin:$PATH
 
-#= Brewfile
-export HOMEBREW_BREWFILE=/usr/local/Library/Brewfile
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-
-# Coloring ls command
+#= Coloring ls command
 export CLICOLOR=1
-export LSCOLORS="cxfxcxdxbxegedabagacad"
+export LSCOLORS=ExFxBxDxCxegedabagacad
 
-#brew
+#= brew / brewfile
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
   source $(brew --prefix)/etc/brew-wrap
 fi
 export HOMEBREW_BREWFILE=~/Brewfile
 
-# completion
+#= bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# .inputrc
+#= .inputrc
 [ -f ~/.inputrc ] && bind -f ~/.inputrc
 
-#hub
+#= hub
 eval "$(hub alias -s)"
 
-# nvm
+#= nvm
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
 
+#= bash-git-prompt
+# see: https://github.com/magicmonty/bash-git-prompt
+# if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+#  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+#  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+# fi
