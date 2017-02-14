@@ -7,6 +7,7 @@ a rm='rm -i'
 a v='vim'
 a vi='vim'
 a vim='mvim -v'
+a be='bundle exec'
 
 #= Dash shortcut
 # cf: $ dash vim
