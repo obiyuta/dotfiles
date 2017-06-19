@@ -1,4 +1,9 @@
 "*":
+  core:
+    disabledPackages: [
+      "git-plus"
+    ]
+    telemetryConsent: "no"
   editor:
     fontSize: 11
   "exception-reporting":
