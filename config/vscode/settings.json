@@ -1,0 +1,8 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+    "editor.fontSize": 11,
+    "editor.tabSize": 2,
+    "files.defaultLanguage": "en",
+    "workbench.welcome.enabled": false,
+    "typescript.check.npmIsInstalled": false,   
+}

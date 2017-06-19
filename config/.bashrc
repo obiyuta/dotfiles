@@ -1,3 +1,4 @@
+#!/bin/bash
 #= alias
 alias a='alias'
 a ll='ls -l'

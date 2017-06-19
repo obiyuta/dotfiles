@@ -1,0 +1,2 @@
+ln '.vim'
+ln '.vimrc'
