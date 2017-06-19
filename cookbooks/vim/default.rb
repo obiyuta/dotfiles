@@ -14,6 +14,7 @@ git 'Pull latest neobundle' do
 end
 
 install_sh = File.join(bundle_dir, 'bin/install.sh')
-execute 'Install NeoBundle' do
-  command install_sh  
+execute 'Install neobundle' do
+  command install_sh
+  only_if "test -e #{install_sh}"
 end
