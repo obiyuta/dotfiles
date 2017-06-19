@@ -12,6 +12,6 @@ link 'settings.json' do
 end
 
 execute 'Install VSCode extensions' do
-  command File.join(config_dir, 'bin', 'install')
+  command File.join(config_dir, 'bin', 'setup')
   only_if "test -e #{File.join(config_dir, 'extensions')}"
 end

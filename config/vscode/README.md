@@ -1,7 +1,7 @@
-## install
+## setup
 
 ```
-./bin/install
+./bin/setup
 ```
 
 ## export
