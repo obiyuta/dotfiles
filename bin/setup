@@ -33,7 +33,7 @@ bundle_install() {
 }
 
 cook() {
-  bundle exec itamae local recipe.rb
+  bundle exec itamae local recipe.rb -l debug
 }
 
 main
