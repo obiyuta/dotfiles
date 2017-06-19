@@ -1,0 +1,30 @@
+#!/bin/bash
+
+main() {
+  check_requirements
+  bundle_install
+  cook
+}
+
+check_requirements() {
+  check_command_exists() {
+    if ! eval "command -v ${1} > /dev/null"; then
+      echo "You must install ${1} first."
+      exit 1
+    fi
+  }
+
+  check_command_exists 'ruby'
+  check_command_exists 'bundle'
+  check_command_exists 'git'
+}
+
+bundle_install() {
+  bundle install --path vendor/bundle
+}
+
+cook() {
+  bundle exec itamae local recipe.rb
+}
+
+main
