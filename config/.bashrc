@@ -59,7 +59,9 @@ eval "$(hub alias -s)"
 
 #= nvm
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+if [ -f ~/.inputrc ]; then
+  . "$(brew --prefix nvm)/nvm.sh"
+fi
 
 #= bash-git-prompt
 # see: https://github.com/magicmonty/bash-git-prompt
