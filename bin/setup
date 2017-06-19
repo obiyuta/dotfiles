@@ -2,6 +2,7 @@
 
 main() {
   check_requirements
+  check_github_access
   bundle_install
   cook
 }
@@ -17,6 +18,14 @@ check_requirements() {
   check_command_exists 'ruby'
   check_command_exists 'bundle'
   check_command_exists 'git'
+}
+
+check_github_access() {
+  if eval "ssh -T git@github.com > /dev/null"; then
+    echo 'You must be avalable to access github.com through ssh'
+    echo 'see https://github.com/settings/keys'
+    exit 1
+  fi
 }
 
 bundle_install() {
