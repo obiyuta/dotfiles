@@ -5,7 +5,7 @@ main() {
 }
 
 install_extensions() {
-  filename="${PWD}/extensions"
+  filename="${PWD}/config/vscode/extensions"
   echo $filename
   cat ${filename} | while read line
   do
