@@ -1,0 +1,16 @@
+#!/bin/bash
+
+main() {
+  install_extensions
+}
+
+install_extensions() {
+  filename="${PWD}/extensions"
+  echo $filename
+  cat ${filename} | while read line
+  do
+    code --install-extension ${line}
+  done
+}
+
+main
