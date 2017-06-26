@@ -4,5 +4,5 @@
     "editor.tabSize": 2,
     "files.defaultLanguage": "en",
     "workbench.welcome.enabled": false,
-    "typescript.check.npmIsInstalled": false,   
+    "typescript.check.npmIsInstalled": false
 }
