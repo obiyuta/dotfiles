@@ -1,7 +1,7 @@
 include_recipe './cookbooks/symboliclinks/default.rb'
 include_recipe './cookbooks/bash/default.rb'
-include_recipe './cookbooks/ruby/default.rb'
 include_recipe './cookbooks/homebrew/default.rb'
+include_recipe './cookbooks/ruby/default.rb'
 include_recipe './cookbooks/nvm/default.rb'
 include_recipe './cookbooks/readline/default.rb'
 include_recipe './cookbooks/git/default.rb'
