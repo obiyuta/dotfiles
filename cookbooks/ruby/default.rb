@@ -11,3 +11,8 @@ end
 execute 'Set ruby version' do
   command "rbenv global #{version}"
 end
+
+execute 'Install bundler' do
+  command 'rbenv exec gem install bundler'
+  not_if 'rbenv exec gem list --local | grep bundler'
+end
