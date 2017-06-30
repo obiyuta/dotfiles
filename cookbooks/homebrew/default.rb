@@ -1,6 +1,7 @@
 
+s = 'https://raw.githubusercontent.com/Homebrew/install/master/install'
 execute 'Install Homebrew' do
-  command 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  command "ruby -e '$(curl -fsSL #{s})'"
   not_if 'test $(which brew)'
 end
 

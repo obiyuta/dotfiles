@@ -11,7 +11,7 @@ describe file("#{ENV['HOME']}/.rbenv/shims/ruby") do
 end
 
 describe command('which ruby') do
-  its(:stdout) { should match /.rbenv/ }
+  its(:stdout) { should match '/.rbenv/' }
 end
 
 describe file("#{ENV['HOME']}/.rbenv/shims/bundler") do
@@ -19,7 +19,7 @@ describe file("#{ENV['HOME']}/.rbenv/shims/bundler") do
 end
 
 describe command('which bundler') do
-  its(:stdout) { should match /.rbenv/ }
+  its(:stdout) { should match '/.rbenv/' }
 end
 
 describe file("#{ENV['HOME']}/.ruby-version") do
