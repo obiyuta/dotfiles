@@ -1,0 +1,4 @@
+gems:
+  packages:
+    - circle-cli
+    - docker-sync

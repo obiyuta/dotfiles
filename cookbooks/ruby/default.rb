@@ -16,3 +16,9 @@ execute 'Install bundler' do
   command 'rbenv exec gem install bundler'
   not_if 'rbenv exec gem list --local | grep bundler'
 end
+
+node['gems']['packages'].each do |package|
+  execute 'Install gems' do
+    command "gem install #{package} --no-ri --no-rdoc"
+  end
+end
