@@ -13,5 +13,6 @@ end
 
 execute 'Install VSCode extensions' do
   command File.join(config_dir, 'bin', 'setup')
+  cwd config_dir
   only_if "test -e #{File.join(config_dir, 'extensions')}"
 end

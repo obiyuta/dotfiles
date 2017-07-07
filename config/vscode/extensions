@@ -6,6 +6,7 @@ eg2.tslint
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 formulahendry.terminal
+misogi.ruby-rubocop
 msjsdiag.debugger-for-chrome
 rebornix.Ruby
 robertohuertasm.vscode-icons
