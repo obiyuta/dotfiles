@@ -1,6 +1,10 @@
 user_dir = File.join(ENV['HOME'], 'Library/Application Support/Code/User')
 config_dir = File.expand_path('../../../config/vscode', __FILE__)
 
+execute 'Notice' do
+  command 'echo "Please launch VSCode if you never. (We need to create application support files by VSCode)"'
+end
+
 link 'locale.json' do
   link File.join(user_dir, 'locale.json')
   to File.join(config_dir, 'locale.json')
