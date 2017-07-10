@@ -5,5 +5,5 @@
     "files.defaultLanguage": "en",
     "workbench.welcome.enabled": false,
     "typescript.check.npmIsInstalled": false,
-    "window.zoomLevel": -1
+    "window.zoomLevel": 0
 }
