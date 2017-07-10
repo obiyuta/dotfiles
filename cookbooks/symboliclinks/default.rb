@@ -3,5 +3,6 @@ define :ln do
   dotfile = File.join(ENV['HOME'], name)
   link dotfile do
     to File.expand_path("../../../config/#{name}", __FILE__)
+    not_if "test -e #{dotfile}"
   end
 end
