@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-# Thanks to
+# Referred
 # https://github.com/matiassingers/dotfiles/blob/master/home/.osx
 # https://github.com/paularmstrong/dotfiles/blob/master/osx/defaults.sh
+# http://ottan.xyz/system-preferences-terminal-defaults-mission-control-4656/
+# http://baqamore.hatenablog.com/entry/2013/09/03/013013
+# https://github.com/woowee/macset/blob/2da1a7186eea1d67cf2ad974257c27ede5d5876d/macos.sh
 
 # 電源
 ### バッテリー仕様時
@@ -43,8 +46,7 @@ defaults write com.apple.finder ShowStatusBar -bool true
 ### 表示形式（リスト）
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`, 'Nlsv
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-
-# ファイルの拡張子を表示
+### ファイルの拡張子を非表示
 defaults write NSGlobalDomain AppleShowAllExtensions -bool false
 
 # Dock
@@ -56,6 +58,8 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock magnification -int 1
 defaults write com.apple.dock tilesize -int 34
 defaults write com.apple.dock largesize -int 42
+### 最新の使用状況に基づいて操作スペースを自動的に並べない
+defaults write com.apple.dock mru-spaces -bool false
 
 # デスクトップ
 ### グリッド表示
@@ -98,14 +102,12 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGe
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
-
 ### Mission Control (4 finger)
 defaults write com.apple.AppleMultitouchTrackpad  TrackpadFourFingerVertSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad  TrackpadThreeFingerVertSwipeGesture -int 0
 defaults write com.apple.dock  showMissionControlGestureEnabled -boolean true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad  TrackpadFourFingerVertSwipeGesture -int 2
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad  TrackpadThreeFingerVertSwipeGesture -int 0
-
 ### Expose (4 finger)
 defaults write com.apple.AppleMultitouchTrackpad  TrackpadFourFingerVertSwipeGesture -int 2
 defaults write com.apple.AppleMultitouchTrackpad  TrackpadThreeFingerVertSwipeGesture -int 0
@@ -133,14 +135,11 @@ defaults write com.apple.menuextra.clock IsAnalog -bool false
 defaults write com.apple.menuextra.battery ShowPercent -string YES
 
 # その他
-
 ### Avoid creating `.DS_Store` files on network volumes （ネットワークディスクで、`.DS_Store` ファイルを作らない）
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-# 印刷ダイアログを詳細設定で表示 (10.6 and before, Key name is PMPrintingExpandedStateForPrint)
+### 印刷ダイアログを詳細設定で表示 (10.6 and before, Key name is PMPrintingExpandedStateForPrint)
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# iPhone接続時にPhotoを起動させない
+### iPhone接続時にPhotoを起動させない
 defaults write com.apple.ImageCapture disableHotPlug -bool false
 
 # Kill affected applications
