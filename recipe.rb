@@ -10,3 +10,6 @@ include_recipe './cookbooks/tmux/default.rb'
 include_recipe './cookbooks/vim/default.rb'
 include_recipe './cookbooks/vscode/default.rb'
 include_recipe './cookbooks/Xresources/default.rb'
+include_recipe './cookbooks/macos/default.rb'
+
+puts '*********** all done. ***********'

@@ -1,0 +1,148 @@
+#!/usr/bin/env bash
+
+# Thanks to
+# https://github.com/matiassingers/dotfiles/blob/master/home/.osx
+# https://github.com/paularmstrong/dotfiles/blob/master/osx/defaults.sh
+
+# 電源
+### バッテリー仕様時
+sudo pmset -b standbydelay 10800
+sudo pmset -b displaysleep 2
+sudo pmset -b disksleep 10
+sudo pmset -b powernap 0
+### 給電時
+sudo pmset -b standbydelay 10800
+sudo pmset -c displaysleep 3
+sudo pmset -c disksleep 10
+sudo pmset -b powernap 1
+
+# 文字入力
+### キーリピート
+defaults write -g KeyRepeat -int 2
+defaults write -g InitialKeyRepeat -int 15
+
+### 補完
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool true
+defaults write -g NSAutomaticTextCompletionEnabled -bool true
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Finder
+### 新しいウィンドウでデフォルトでホームフォルダを開く
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+### 全ファイルを表示 
+defaults write com.apple.finder AppleShowAllFiles -bool true
+### パスバーを表示
+defaults write com.apple.finder ShowPathbar -bool true
+### ステータスバーを表示
+defaults write com.apple.finder ShowStatusBar -bool true
+### 表示形式（リスト）
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`, 'Nlsv
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+
+# ファイルの拡張子を表示
+defaults write NSGlobalDomain AppleShowAllExtensions -bool false
+
+# Dock
+### 位置
+defaults write com.apple.dock orientation -string left
+### 自動で隠す
+defaults write com.apple.dock autohide -bool true
+### アイコンサイズ
+defaults write com.apple.dock magnification -int 1
+defaults write com.apple.dock tilesize -int 34
+defaults write com.apple.dock largesize -int 42
+
+# デスクトップ
+### グリッド表示
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+### グリッドの間隔
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+### アイコンサイズ
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
+### フォントサイズ
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
+### デスクトップに外部機器を表示しない
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool false
+
+# キーボード
+### 入力ソースをメニューバーに表示
+defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/TextInput.menu"
+### 書類ごとにソースを切り替えない
+defaults write com.apple.HIToolbox AppleGlobalTextInputProperties -dict TextInputGlobalPropertyPerContextInput false
+
+
+# トラックパッド
+### 軌道の速さ
+defaults write -g com.apple.trackpad.scaling -float 3.0
+### forceclick
+defaults write -g com.apple.trackpad.forceClick -bool true
+### ページ間をスワイプ（2 finger）
+defaults write -g AppleEnableSwipeNavigateWithScrolls -boolean true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+
+### Mission Control (4 finger)
+defaults write com.apple.AppleMultitouchTrackpad  TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad  TrackpadThreeFingerVertSwipeGesture -int 0
+defaults write com.apple.dock  showMissionControlGestureEnabled -boolean true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad  TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad  TrackpadThreeFingerVertSwipeGesture -int 0
+
+### Expose (4 finger)
+defaults write com.apple.AppleMultitouchTrackpad  TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad  TrackpadThreeFingerVertSwipeGesture -int 0
+defaults write com.apple.dock  showAppExposeGestureEnabled -boolean true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+
+# スクリーンセーバー
+### パスワードを即要求
+defaults write com.apple.screensaver askForPassword -bool true
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Terminal.app
+defaults write com.apple.Terminal "Default Window Settings" -string Homebrew
+defaults write com.apple.Terminal "Startup Window Settings" -string Homebrew
+
+# メニューバー
+### 透過しない
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+### 曜日を表示せず秒ごとに点滅
+defaults write com.apple.menuextra.clock DateFormat -string "H:mm:ss"
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool true
+defaults write com.apple.menuextra.clock IsAnalog -bool false
+### バッテリーのパーセントを表示
+defaults write com.apple.menuextra.battery ShowPercent -string YES
+
+# その他
+
+### Avoid creating `.DS_Store` files on network volumes （ネットワークディスクで、`.DS_Store` ファイルを作らない）
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# 印刷ダイアログを詳細設定で表示 (10.6 and before, Key name is PMPrintingExpandedStateForPrint)
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# iPhone接続時にPhotoを起動させない
+defaults write com.apple.ImageCapture disableHotPlug -bool false
+
+# Kill affected applications
+for app in Finder Dock SystemUIServer; do killall "$app"; done
+echo 'Done. Note that some of these changes require a logout/restart to take effect.'
