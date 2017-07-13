@@ -37,8 +37,8 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 ### 新しいウィンドウでデフォルトでホームフォルダを開く
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
-### 全ファイルを表示 
-defaults write com.apple.finder AppleShowAllFiles -bool true
+### 全ファイルを表示（隠しファイルも）
+defaults write com.apple.finder AppleShowAllFiles -bool false
 ### パスバーを表示
 defaults write com.apple.finder ShowPathbar -bool true
 ### ステータスバーを表示
