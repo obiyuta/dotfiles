@@ -134,6 +134,16 @@ defaults write com.apple.menuextra.clock IsAnalog -bool false
 ### バッテリーのパーセントを表示
 defaults write com.apple.menuextra.battery ShowPercent -string YES
 
+# Siri
+### ショートカットをOFF
+defaults write com.apple.Siri HotkeyTag -int 0
+### メニューバーに表示
+defaults write com.apple.Siri StatusMenuVisible -bool 1
+
+# Source Tree
+### fileStatusStagingViewMode = 1;
+### fileStatusViewMode2 = 2;
+
 # その他
 ### Avoid creating `.DS_Store` files on network volumes （ネットワークディスクで、`.DS_Store` ファイルを作らない）
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
