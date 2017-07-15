@@ -47,7 +47,7 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`, 'Nlsv
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 ### ファイルの拡張子を非表示
-defaults write NSGlobalDomain AppleShowAllExtensions -bool false
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Dock
 ### 位置
@@ -133,6 +133,16 @@ defaults write com.apple.menuextra.clock FlashDateSeparators -bool true
 defaults write com.apple.menuextra.clock IsAnalog -bool false
 ### バッテリーのパーセントを表示
 defaults write com.apple.menuextra.battery ShowPercent -string YES
+
+# Siri
+### ショートカットをOFF
+defaults write com.apple.Siri HotkeyTag -int 0
+### メニューバーに表示
+defaults write com.apple.Siri StatusMenuVisible -bool 1
+
+# Source Tree
+### fileStatusStagingViewMode = 1;
+### fileStatusViewMode2 = 2;
 
 # その他
 ### Avoid creating `.DS_Store` files on network volumes （ネットワークディスクで、`.DS_Store` ファイルを作らない）
