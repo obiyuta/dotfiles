@@ -1,112 +1,31 @@
-
-set nocompatible               " be iMproved
 filetype off
 filetype plugin indent off
 
-"==============================
-" NeoBundle settings
-"==============================
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+"------------------------------
+" dein
+"------------------------------
+
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  let s:toml = s:dein_dir . '/plugins/dein.toml'
+  let s:lazy_toml = s:dein_dir . '/plugins/dein_lazy.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" NeoBundle自身をNeoBundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-" 統合UI
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-" VimShell
-NeoBundle 'Shougo/vimshell'
-" Snippets
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-" 非同期処理
-NeoBundle 'Shougo/vimproc'
-" Git便利
-NeoBundle 'tpope/vim-fugitive'
-" Git gutter
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'VimClojure'
-NeoBundle 'jpalardy/vim-slime'
-" 構文チェック
-NeoBundle 'scrooloose/syntastic'
-" ファイルツリーを表示
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-" Emmet
-NeoBundle 'mattn/emmet-vim'
-" インデントを可視化
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" コメントのon/off（Ctrl+-）
-NeoBundle 'tomtom/tcomment_vim'
-" ログへのカラー情報反映
-NeoBundle 'vim-scripts/AnsiEsc.vim'
-" 閉じ括弧自動補完
-NeoBundle 'kana/vim-smartinput'
-" Dash（https://kapeli.com/dash）
-NeoBundle 'rizzatti/dash.vim'
-" カラースキーム
-NeoBundle 'w0ng/vim-hybrid'
-" ユーザー定義submodule
-NeoBundle 'kana/vim-submode'
-
-call neobundle#end()
-NeoBundleCheck
-
-"------------------------------
-" Unite.vim
-"------------------------------
-let g:unite_enable_start_insert=1
-
-"------------------------------
-" neosnippet
-"------------------------------
-"Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
+if dein#check_install()
+  call dein#install()
 endif
-
-"------------------------------
-" nerdtree 
-"------------------------------
-" open a NERDTree automatically when vim starts up
-" autocmd vimenter * NERDTree
-nnoremap <silent><C-n> :NERDTreeToggle<CR>
-
-"------------------------------
-" vim-fugitive
-"------------------------------
-" grep検索の実行後にQuickFix Listを表示する
-autocmd QuickFixCmdPost *grep* cwindow
-
-"------------------------------
-" emmet-vim
-"------------------------------
-let g:user_emmet_leader_key='<C-e>'
-let g:user_emmet_settings = {
-    \    'variables': {
-    \      'lang': "ja"
-    \    },
-    \   'indentation': '    '
-    \ }
 
 "------------------------------
 " Color scheme
@@ -131,17 +50,14 @@ let g:indent_guides_start_level=1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=232
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=233
 
-filetype plugin indent on     " required!
-filetype indent on
-
-"==============================
+"------------------------------
 " Options 
-"==============================
+"------------------------------
 syntax on
-set tabstop=4
+set tabstop=2
 set autoindent
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set number
 set noswapfile
 set ruler
@@ -151,10 +67,23 @@ set clipboard=unnamed,autoselect
 set background=dark
 highlight LineNr ctermfg=darkyellow
 
-"==============================
+"------------------------------
+" Backspace
+" http://sseze.hatenablog.com/entry/20120414/1334398422
+"------------------------------
+set nocompatible
+"カーソルを行頭，行末で止まらないようにする
+set whichwrap=b,s,h,l,<,>,[,]
+"BSで削除できるものを指定する
+" indent  : 行頭の空白
+" eol     : 改行
+" start   : 挿入モード開始位置より手前の文字
+set backspace=indent,eol,start
+
+"------------------------------
 " カーソル位置の復元
 " http://qiita.com/jnchito/items/5141b3b01bced9f7f48f
-"==============================
+"------------------------------
 if has("autocmd")
     autocmd BufReadPost *
     \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -162,10 +91,10 @@ if has("autocmd")
     \ endif
 endif
 
-"==============================
+"------------------------------
 " Status line
 " http://blog.ruedap.com/2011/07/12/vim-statusline-git-branch-name
-"==============================
+"------------------------------
 set statusline=%<     " 行が長すぎるときに切り詰める位置
 set statusline+=[%n]  " バッファ番号
 set statusline+=%m    " %m 修正フラグ
@@ -192,10 +121,10 @@ set statusline+=%V    " 画面上の何列目にカーソルがあるか
 set statusline+=\ \   " 空白スペース2個
 
 
-"==============================
+"------------------------------
 " Key Mapping 
 " http://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca
-"==============================
+"------------------------------
 inoremap <silent> jj <ESC>
 
 " window/tab/moveの操作感はなるべくtmuxと揃える
@@ -228,6 +157,5 @@ call submode#map('window-resize', 'n', '', '<', '<C-w><')
 call submode#map('window-resize', 'n', '', '+', '<C-w>+')
 call submode#map('window-resize', 'n', '', '_', '<C-w>-')
 
-
-
-
+filetype plugin indent on     " required!
+filetype indent on
