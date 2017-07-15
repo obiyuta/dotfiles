@@ -138,7 +138,7 @@ defaults write com.apple.menuextra.battery ShowPercent -string YES
 ### ショートカットをOFF
 defaults write com.apple.Siri HotkeyTag -int 0
 ### メニューバーに表示
-defaults write com.apple.Siri StatusMenuVisible -bool 1
+defaults write com.apple.Siri StatusMenuVisible -bool true
 
 # Source Tree
 ### fileStatusStagingViewMode = 1;
