@@ -13,4 +13,4 @@ include_recipe './cookbooks/vscode/default.rb'
 include_recipe './cookbooks/Xresources/default.rb'
 include_recipe './cookbooks/macos/default.rb'
 
-puts '*********** all done. ***********'
+execute 'echo *********** all done. ***********'
