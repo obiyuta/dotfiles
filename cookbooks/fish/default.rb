@@ -8,19 +8,24 @@ execute 'Change default shell to fish' do
   not_if 'test $SHELL = `which fish`'
 end
 
-fisher_config_path = File.join(ENV['HOME'], '.config', 'fish')
-fisher_install_path = File.join(fisher_config_path, '/functions/fisher.fish')
+fish_config_path = File.join(ENV['HOME'], '.config', 'fish')
 
+fishfile_path = File.expand_path('../../../config/fish/config.fish', __FILE__)
+link 'config.fish' do
+  link File.join(fish_config_path, 'config.fish')
+  to fishfile_path
+end
+
+fisher_install_path = File.join(fish_config_path, '/functions/fisher.fish')
 execute 'Install fisherman' do
   command "curl -Lo #{fisher_install_path} --create-dirs git.io/fisherman"
   not_if "test -e #{fisher_install_path}"
 end
 
-fishfile_path = File.expand_path('../../../config/fishfile', __FILE__)
-fishfile_install_path = File.join(fisher_config_path, 'fishfile')
-
+fishfile_path = File.expand_path('../../../config/fish/fishfile', __FILE__)
+fishfile_install_path = File.join(fish_config_path, 'fishfile')
 execute 'Rename fishfile if original is exists' do
-  rename = File.join(fisher_config_path, '_fishfile')
+  rename = File.join(fish_config_path, '_fishfile')
   command "mv #{fishfile_install_path} #{rename}"
   only_if "test -f #{fishfile_install_path} &&
            test ! -L #{fishfile_install_path}"
@@ -31,6 +36,7 @@ link 'fishfile' do
   to fishfile_path
 end
 
-execute 'Install fish plugins' do
-  command '$EDITOR ~/.config/fish/fishfile; fisher'
-end
+# Executing fisherman from ruby
+# =========
+# $EDITOR ~/.config/fish/fishfile; fisher
+# =========
