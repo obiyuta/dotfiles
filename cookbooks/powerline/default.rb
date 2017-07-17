@@ -14,7 +14,8 @@ execute 'Install fonts' do
   only_if "test -e #{install_sh}"
 end
 
-font_config = File.join(dest_path, 'fontconfig', '50-enable-terminess-powerline.conf')
+font_file = '50-enable-terminess-powerline.conf'
+font_config = File.join(dest_path, 'fontconfig', font_file)
 font_config_dest = File.join(ENV['HOME'], '.config/fontconfig/conf.d')
 
 directory font_config_dest
