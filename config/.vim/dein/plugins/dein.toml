@@ -30,3 +30,6 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]] # Status line
 repo = 'vim-airline/vim-airline'
+
+[[plugins]] # Tree explorer
+repo = 'scrooloose/nerdtree'

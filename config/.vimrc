@@ -81,6 +81,12 @@ set whichwrap=b,s,h,l,<,>,[,]
 set backspace=indent,eol,start
 
 "------------------------------
+" NERDTree
+" http://qiita.com/ymiyamae/items/3fa77d85163fb734b359#_reference-dc9ff3270aaea612d91a
+"------------------------------
+autocmd VimEnter *  NERDTree
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
 " カーソル位置の復元
 " http://qiita.com/jnchito/items/5141b3b01bced9f7f48f
 "------------------------------
