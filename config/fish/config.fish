@@ -26,3 +26,8 @@ set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig
 
 #= hub
 eval (hub alias -s)
+
+#= peco
+function fish_user_key_bindings
+  bind \cr peco_select_history
+end

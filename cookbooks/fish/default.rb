@@ -8,21 +8,23 @@ execute 'Change default shell to fish' do
   not_if 'test $SHELL = `which fish`'
 end
 
-fish_config_path = File.join(ENV['HOME'], '.config', 'fish')
+difined_config_dir_path = File.expand_path('../../../config/fish/', __FILE__)
 
-fishfile_path = File.expand_path('../../../config/fish/config.fish', __FILE__)
+fish_config_path = File.join(ENV['HOME'], '.config', 'fish')
+defined_config_path = File.join(difined_config_dir_path, 'config.fish')
 link 'config.fish' do
   link File.join(fish_config_path, 'config.fish')
-  to fishfile_path
+  to defined_config_path
 end
 
-fisher_install_path = File.join(fish_config_path, '/functions/fisher.fish')
+fish_func_path = File.join(fish_config_path, 'functions')
+fisher_install_path = File.join(fish_func_path, 'fisher.fish')
 execute 'Install fisherman' do
   command "curl -Lo #{fisher_install_path} --create-dirs git.io/fisherman"
   not_if "test -e #{fisher_install_path}"
 end
 
-fishfile_path = File.expand_path('../../../config/fish/fishfile', __FILE__)
+defined_fishfile_path = File.join(difined_config_dir_path, 'fishfile')
 fishfile_install_path = File.join(fish_config_path, 'fishfile')
 execute 'Rename fishfile if original is exists' do
   rename = File.join(fish_config_path, '_fishfile')
@@ -33,10 +35,20 @@ end
 
 link 'fishfile' do
   link fishfile_install_path
-  to fishfile_path
+  to defined_fishfile_path
 end
 
-# Executing fisherman from ruby
+# link functions files
+defined_func_dir_path = File.join(difined_config_dir_path, 'functions')
+Dir.chdir(defined_func_dir_path)
+Dir.glob('*.fish') do |file|
+  link file do
+    link File.join(fish_func_path, file)
+    to File.join(defined_func_dir_path, file)
+  end
+end
+
+# Executing fisherman
 # =========
 # $EDITOR ~/.config/fish/fishfile; fisher
 # =========
