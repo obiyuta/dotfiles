@@ -7,11 +7,12 @@ git 'Clone fonts' do
 end
 
 install_sh = File.join(dest_path, 'install.sh')
+install_flag = File.join(dest_path, '.installed')
 
 execute 'Install fonts' do
   command './install.sh'
   cwd dest_path
-  only_if "test -e #{install_sh}"
+  not_if "test -e #{install_flag}"
 end
 
 font_file = '50-enable-terminess-powerline.conf'
@@ -20,16 +21,16 @@ font_config_dest = File.join(ENV['HOME'], '.config/fontconfig/conf.d')
 
 directory font_config_dest
 execute 'Create fontconfig file' do
-  command "mv #{font_config} #{font_config_dest}"
-  only_if "test -e #{install_sh}"
+  command "cp #{font_config} #{font_config_dest}"
+  not_if "test -e #{install_flag}"
 end
 
 execute 'Re-cache fonts' do
   command 'fc-cache -vf'
-  only_if "test -e #{install_sh}"
+  not_if "test -e #{install_flag}"
 end
 
-file install_sh do
-  action :remove
-  only_if "test -e #{install_sh}"
+file install_flag do
+  action :create
+  not_if "test -e #{install_flag}"
 end
