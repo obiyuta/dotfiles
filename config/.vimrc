@@ -84,6 +84,7 @@ set backspace=indent,eol,start
 " NERDTree
 " http://qiita.com/ymiyamae/items/3fa77d85163fb734b359#_reference-dc9ff3270aaea612d91a
 "------------------------------
+let NERDTreeShowHidden = 1
 autocmd VimEnter *  NERDTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 

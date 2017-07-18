@@ -33,3 +33,6 @@ repo = 'vim-airline/vim-airline'
 
 [[plugins]] # Tree explorer
 repo = 'scrooloose/nerdtree'
+
+[[plugins]] # Shell Window
+repo = 'Shougo/vimshell.vim'
