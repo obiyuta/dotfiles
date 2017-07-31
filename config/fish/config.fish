@@ -12,6 +12,9 @@ a be 'bundle exec'
 #= homebrew
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
 
+#= direnv
+eval (direnv hook fish)
+
 #= rbenv
 # http://qiita.com/raccy/items/61bd4780b2bd6de49deb
 rbenv init - | source
