@@ -11,6 +11,7 @@ include_recipe './cookbooks/tig/default.rb'
 include_recipe './cookbooks/tmux/default.rb'
 include_recipe './cookbooks/vim/default.rb'
 include_recipe './cookbooks/vscode/default.rb'
+include_recipe './cookbooks/apex/default.rb'
 include_recipe './cookbooks/Xresources/default.rb'
 include_recipe './cookbooks/macos/default.rb'
 
