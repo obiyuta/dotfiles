@@ -13,6 +13,7 @@ a be 'bundle exec'
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
 
 #= direnv
+set -x EDITOR vim
 eval (direnv hook fish)
 
 #= rbenv
