@@ -65,3 +65,12 @@ set -g theme_color_scheme dark
 # set -g fish_prompt_pwd_dir_length 0
 # set -g theme_project_dir_length 1
 set -g theme_newline_cursor no
+
+# The next line updates PATH for the Google Cloud SDK.
+set HOMEBREW_CASK_PATH /usr/local/Caskroom/
+if [ -f "$HOMEBREW_CASK_PATH/google-cloud-sdk/path.bash.inc" ]; 
+  bass source "$HOMEBREW_CASK_PATH/google-cloud-sdk/path.bash.inc"
+end;
+if [ -f "$HOMEBREW_CASK_PATH/google-cloud-sdk/completion.bash.inc" ]; 
+  bass source "$HOMEBREW_CASK_PATH/google-cloud-sdk/completion.bash.inc"
+end;
