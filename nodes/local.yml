@@ -1,4 +1,5 @@
 gems:
   packages:
     - circle-cli
+    - travis
     - docker-sync

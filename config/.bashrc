@@ -73,3 +73,6 @@ export NODE_PATH=$npm_dir
 #  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
 #  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 # fi
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
