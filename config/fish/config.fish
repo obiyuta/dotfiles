@@ -8,6 +8,8 @@ a v 'vim'
 a vi 'vim'
 a vim 'mvim -v'
 a be 'bundle exec'
+a dc 'docker-compose'
+a kc 'kubectl'
 
 #= homebrew
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
