@@ -12,6 +12,12 @@ difined_config_dir_path = File.expand_path('../../../config/fish/', __FILE__)
 
 fish_config_path = File.join(ENV['HOME'], '.config', 'fish')
 defined_config_path = File.join(difined_config_dir_path, 'config.fish')
+
+execute 'Make fish dir' do
+  command "mkdir #{fish_config_path}"
+  not_if "test -d #{fish_config_path}"
+end
+
 link 'config.fish' do
   link File.join(fish_config_path, 'config.fish')
   to defined_config_path
