@@ -18,6 +18,9 @@ set -x PATH /usr/local/bin /usr/local/sbin $PATH
 set -x EDITOR vim
 eval (direnv hook fish)
 
+#= nodenv
+nodenv init - fish | source
+
 #= rbenv
 # http://qiita.com/raccy/items/61bd4780b2bd6de49deb
 rbenv init - | source
