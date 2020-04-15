@@ -5,9 +5,10 @@ eg2.tslint
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 msjsdiag.debugger-for-chrome
-rebornix.Ruby
-robertohuertasm.vscode-icons
+rebornix.ruby
+vscode-icons-team.vscode-icons
 shinnn.stylelint
-sianglim.slim
 xabikos.JavaScriptSnippets
 xabikos.ReactSnippets
+ms-azuretools.vscode-docker
+wingrunr21.vscode-ruby
