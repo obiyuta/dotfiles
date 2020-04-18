@@ -19,6 +19,6 @@ end
 
 node['gems']['packages'].each do |package|
   execute 'Install gems' do
-    command "rbenv exec gem install #{package} --no-ri --no-rdoc"
+    command "rbenv exec gem install #{package} -N"
   end
 end
