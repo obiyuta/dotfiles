@@ -60,6 +60,8 @@ defaults write com.apple.dock tilesize -int 34
 defaults write com.apple.dock largesize -int 42
 ### 最新の使用状況に基づいて操作スペースを自動的に並べない
 defaults write com.apple.dock mru-spaces -bool false
+### 最近利用したアプリケーションを表示しない
+defaults write com.apple.dock show-recents -bool false
 
 # デスクトップ
 ### グリッド表示
