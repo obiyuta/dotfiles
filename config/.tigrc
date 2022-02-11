@@ -1,5 +1,0 @@
-bind generic C      !git commit
-bind refs    C      !git commit
-bind main    C      !git commit
-bind main G !@hub browse -- commit/%(commit)
-bind diff G !@hub browse -- commit/%(commit)

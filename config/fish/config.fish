@@ -13,6 +13,7 @@ a kc 'kubectl'
 
 #= homebrew
 set -x PATH /usr/local/bin /usr/local/sbin $PATH
+set -g -x PATH $PATH /opt/homebrew/bin
 
 #= direnv
 set -x EDITOR vim
@@ -32,9 +33,6 @@ set -x NODE_PATH $npm_dir
 
 #= imagemagick
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig
-
-#= hub
-eval (hub alias -s)
 
 #= peco
 function fish_user_key_bindings
